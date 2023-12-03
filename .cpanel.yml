@@ -1,0 +1,20 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to cPanel
+        run: |
+          sshpass -p Universal1890!!## scp -r /home/weba3991/product-pricing* weba3991:/home/weba3991/public_html
+        env:
+          CPANEL_PASSWORD: Universal1890!!##
