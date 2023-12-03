@@ -1,0 +1,21 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to cPanel
+        id: deploy
+        uses: pinkasey/cpanel-repository-action@v1.0.0
+        with:
+          hostname: 'https://cpl13.main-hosting.eu'
+          cpanel_token: 'F7WQMSK3GLNUACMAJ2A1KRIKXVFF0YES'
+          cpanel_username: 'weba3991'
+          repository_root: '/home/weba3991/product-pricing'
+          branch: main
+      - name: echo deploy-duration
+        run: echo "Deployment took ${{ steps.deploy.outputs.duration }} milliseconds"
