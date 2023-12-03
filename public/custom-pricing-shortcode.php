@@ -27,7 +27,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
 <div class="custom-pricing-form">
     <!-- Display the form for room customization -->
     <div id="rooms-container" class="main-pricing-container">
-        <h3 class="tag-line-1">1 - Give your room a name and enter the dimensions of the curtains asdsadas</h3>
+        <h3 class="tag-line-1">1 - Give your room a name and enter the dimensions of the curtains</h3>
         <div class="parent">
             <div class="child-1">
                 <label for="room-name">Room <span class="text-star">*</span></label>
