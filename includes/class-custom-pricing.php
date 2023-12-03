@@ -38,7 +38,7 @@ class Custom_Pricing {
         wp_enqueue_style('custom-pricing-frontend-styles', CUSTOM_PRICING_PLUGIN_URL . 'public/css/frontend-styles.css');
 
         // Enqueue scripts
-        wp_enqueue_script('custom-pricing-frontend-scripts', CUSTOM_PRICING_PLUGIN_URL . 'public/js/frontend-scripts.js', array('jquery'), '', true);
+        // wp_enqueue_script('custom-pricing-frontend-scripts', CUSTOM_PRICING_PLUGIN_URL . 'public/js/frontend-scripts.js', array('jquery'), '', true);
     }
 
     /**

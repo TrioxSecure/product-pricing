@@ -44,9 +44,9 @@ class Custom_Pricing_Admin {
      */
     public function enqueue_admin_styles_and_scripts() {
         // Enqueue admin styles
-        wp_enqueue_style('custom-pricing-admin-styles', CUSTOM_PRICING_PLUGIN_URL . 'admin/css/admin-styles.css');
+        // wp_enqueue_style('custom-pricing-admin-styles', CUSTOM_PRICING_PLUGIN_URL . 'admin/css/admin-styles.css');
 
-        // Enqueue admin scripts
-        wp_enqueue_script('custom-pricing-admin-scripts', CUSTOM_PRICING_PLUGIN_URL . 'admin/js/admin-scripts.js', array('jquery'), '', true);
+        // // Enqueue admin scripts
+        // wp_enqueue_script('custom-pricing-admin-scripts', CUSTOM_PRICING_PLUGIN_URL . 'admin/js/admin-scripts.js', array('jquery'), '', true);
     }
 }
