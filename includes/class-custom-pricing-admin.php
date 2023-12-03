@@ -33,8 +33,10 @@ class Custom_Pricing_Admin {
      * Callback function for the admin menu page.
      */
     public function admin_page_callback() {
+        // ob_start();
         // Handle logic for displaying the admin settings page
         include(CUSTOM_PRICING_PLUGIN_DIR . 'admin/admin.php');
+        // ob_get_clean();
     }
 
     /**

@@ -5,12 +5,14 @@
   line-height: 1.5;
   width: 900px;
 }
+
 .main-pricing-container {
   margin: 10px 0px;
   background: rgb(245, 245, 245);
   padding: 15px;
   border-radius: 15px;
 }
+
 .tag-line-1 {
   font-family: Fredoka, sans-serif;
   font-size: 16px;
@@ -19,18 +21,22 @@
   color: rgb(243, 115, 102);
   margin: 0px !important;
 }
+
 .parent {
   display: grid;
   grid-template-columns: 32% 32% 32%;
   gap: 10px;
   padding-bottom: 15px;
 }
-.child-1{
-  margin-right:10px !important;
+
+.child-1 {
+  margin-right: 10px !important;
 }
+
 .text-star {
   color: #dc3545;
 }
+
 .input-style {
   display: block;
   width: 100%;
@@ -45,19 +51,23 @@
   transition: all 0.25s ease 0s;
   margin-top: 8px;
 }
+
 .radio-div {
   display: flex;
   flex-direction: row;
   -webkit-box-align: center;
   align-items: center;
 }
+
 .img-div {
   padding: 3px;
 }
+
 .img {
   margin: 0.25rem !important;
   vertical-align: middle;
 }
+
 .radio-main {
   position: relative;
   display: flex;
@@ -70,18 +80,20 @@
   margin-right: 24px;
   cursor: pointer;
 }
-.radio-main-child
-{
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    width: 100%;
+
+.radio-main-child {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
 }
+
 .radio-label-div {
   padding: 3px;
   font-size: 16px;
 }
+
 .radio-button {
   position: absolute;
   width: 24px !important;
@@ -108,31 +120,33 @@
   border-color: rgb(243, 115, 102);
   box-shadow: rgba(243, 115, 102, 0.25) 0px 0px 0px 0.25rem;
 }
-.another-room
-{
-    font-family: Fredoka, sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    appearance: none;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    flex-shrink: 0;
-    text-align: center;
-    height: 38px;
-    text-decoration: none;
-    font-weight: 600;
-    border: 0px;
-    border-radius: 12px;
-    padding: 0px 15px;
-    color: rgb(0, 0, 0);
-    background-color: transparent;
+
+.another-room {
+  font-family: Fredoka, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  appearance: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+  height: 38px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 0px;
+  border-radius: 12px;
+  padding: 0px 15px;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
 }
+
 .another-room:hover {
-    color: #F37366; /* Change to the desired hover color */
+  color: #F37366;
+  /* Change to the desired hover color */
 }
 
 @media (max-width: 991px) {
@@ -145,48 +159,60 @@
 
 
 .jbmSej {
-    width: 100%;
-    border: none;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    background-color: rgb(243, 115, 102);
-    transition: background-color 300ms linear 0s;
-    color: rgb(245, 245, 245) !important;
-    padding: 8px 15px;
-    border-radius: 15px;
-    cursor: pointer;
+  width: 100%;
+  border: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  background-color: rgb(243, 115, 102);
+  transition: background-color 300ms linear 0s;
+  color: rgb(245, 245, 245) !important;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
 }
+
 .UxwvS {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
 .iSIoed {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
+
 .jfGMXc {
-    padding-bottom: 3px;
-    padding-right: 3px;
+  padding-bottom: 3px;
+  padding-right: 3px;
 }
+
 .ldzrCR {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
+
 .llFwhN {
-    font-size: 16px;
-    font-weight: 600;
-    color: rgb(245, 245, 245) !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(245, 245, 245) !important;
 }
+
 .EhiTg {
-    padding-left: 8px;
-    color: rgb(245, 245, 245) !important;
+  padding-left: 8px;
+  color: rgb(245, 245, 245) !important;
 }
+
 .jbmSej svg {
-    fill: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
 }
+
 svg {
-    vertical-align: middle;
-    fill: rgb(255, 255, 255);
+  vertical-align: middle;
+  fill: rgb(255, 255, 255);
+}
+
+.d-none {
+  display: none !important;
 }

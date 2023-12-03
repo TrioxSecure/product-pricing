@@ -25,8 +25,9 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
 ?>
 
 <div class="custom-pricing-form">
-    <!-- Display the form for room customization -->
-    <div id="rooms-container" class="main-pricing-container">
+   <!-- Display the form for room customization -->
+    <div id="rooms-container" class="main-pricing-container">  
+        <div class="room">
         <h3 class="tag-line-1">1 - Give your room a name and enter the dimensions of the curtains</h3>
         <div class="parent">
             <div class="child-1">
@@ -56,12 +57,11 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                     Pinch Pleat
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="curtain-type">
                                 <input type="radio" class="radio-button curtain-type-radio" name="curtain-type-0" value="pinch-pleat" required />
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="child">
@@ -76,7 +76,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                 Eyelet
                             </div>
                         </div>
-                        <div class="">
+                        <div class="curtain-type">
                             <input type="radio" class="radio-button curtain-type-radio" name="curtain-type-0" value="eyelet" required />
                         </div>
                     </div>
@@ -95,7 +95,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                 Pencil Pleat
                             </div>
                         </div>
-                        <div class="">
+                        <div class="curtain-type">
                             <input type="radio" class="radio-button curtain-type-radio" name="curtain-type-0" value="pencil-pleat" required />
                         </div>
                     </div>
@@ -117,7 +117,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                 Chain<br>+0.000 KD
                             </div>
                         </div>
-                        <div class="">
+                        <div class="control-type">
                             <input type="radio" class="radio-button control-type-radio" name="control-type-0" value="chains" required />
                         </div>
                     </div>
@@ -136,7 +136,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                 Remote - France<br>+145.000 KD
                             </div>
                         </div>
-                        <div class="">
+                        <div class="control-type">
                             <input type="radio" class="radio-button control-type-radio" name="control-type-0" value="remote-france" required />
                         </div>
                     </div>
@@ -155,7 +155,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                                 Remote - China<br>+90.000 KD
                             </div>
                         </div>
-                        <div class="">
+                        <div class="control-type">
                             <input type="radio" class="radio-button control-type-radio" name="control-type-0" value="remote-china" required />
                         </div>
                     </div>
@@ -163,10 +163,12 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                 </div>
             </div>
         </div>
-        <button type="button" class="another-room" id="add-room">+ Add another room</button>
-        <button type="button" class="delete-room">Delete Room</button>
+       
+        <button type="button" class="delete-room d-none">Delete Room</button>
     </div>
-   
+     
+   </div>
+   <button type="button" class="another-room" id="add-room">+ Add another room</button>
 </div>
 <button type="submit" class="product-buy-optionsstyle__AddToCartButton-sc-g9crhl-6 jbmSej">
         <div class="product-buy-optionsstyle__TextWrapper-sc-g9crhl-9 UxwvS" bis_skin_checked="1">
@@ -174,7 +176,7 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
                 <div class="product-buy-optionsstyle__SubItem-sc-g9crhl-11 jfGMXc" bis_skin_checked="1">
                     Total Price
                 </div>
-                <div class="product-buy-optionsstyle__SubItem-sc-g9crhl-11 jfGMXc" bis_skin_checked="1">
+                <div class="product-buy-optionsstyle__SubItem-sc-g9crhl-11 jfGMXc" bis_skin_checked="1" id="total-price">
                     0.000 KD
                 </div>
             </div>
@@ -223,54 +225,62 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
             </h3>
         </div>
     </button>
-<button type="button" id="calculate-price">Calculate Price</button>
-
-<div id="price-display">
-    <p>Total Price: <span id="total-price">0</span></p>
-</div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        function calculatePrice() {
-            // Get values from all rooms
-            var rooms = document.querySelectorAll('.room');
-            var totalPrice = 0;
-            var roomItreate = 0;
-            rooms.forEach(function(room) {
-                var roomWidth = parseFloat(room.querySelector('.room-width').value);
-                var roomHeight = parseFloat(room.querySelector('.room-height').value);
-                var curtainType = room.querySelector('.curtain-type-radio:checked').value;
-                var controlType = room.querySelector('.control-type-radio:checked').value;
-
-
-                // Calculate the price for each room
-                var basePrice = calculateBasePrice(roomWidth, roomHeight);
-                var additionalPrice = calculateAdditionalPrice(controlType);
-                var roomPrice = basePrice + additionalPrice;
-
-
-                // Add the room price to the total
-                totalPrice += roomPrice;
-
-                room.querySelector('.room-width').addEventListener('input', calculatePrice);
-                room.querySelector('.room-height').addEventListener('input', calculatePrice);
-                room.querySelector('input[name="control-type-' + roomItreate + '"]').addEventListener('change', calculatePrice);
-
-                roomItreate++;
-
-            });
-
-            // Update the displayed total price
-            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
-        }
+     document.addEventListener('DOMContentLoaded', function() {
+    
+        // ... (your existing JavaScript code)
 
         function calculateBasePrice(width, height) {
-            // Implement your base price calculation logic here
-            var basePricePerCm = 0.10;
-            return width * height * basePricePerCm;
+            // Constants
+            var pleatValue = <?php echo (get_option('pleat_value', 2)); ?>;
+            var rollWidthSize = <?php echo (get_option('roll_width_size', 280)); ?>;
+            var increaseInRawMaterial = <?php echo (get_option('increase_in_raw_material', 30)); ?>;
+            var priceOfOneMeter = <?php echo (get_option('price_of_one_meter', 20)); ?>;
+
+            // Calculate the quantity of fabric used
+            var fabricQuantity = width * pleatValue / rollWidthSize * height + increaseInRawMaterial;
+
+            // Calculate the final total for the customer
+            var finalTotal = fabricQuantity * priceOfOneMeter / 100;
+
+            return finalTotal;
         }
+
+     function calculatePrice() {
+    var rooms = document.querySelectorAll('.room');
+    var totalPrice = 0;
+    var roomItreate = 0;
+
+    rooms.forEach(function(room) {
+        var roomWidth = parseFloat(room.querySelector('.room-width').value) || 0;
+        
+        // Ensure the minimum height considered is 200 cm
+        var roomHeight = Math.max(parseFloat(room.querySelector('.room-height').value) || 200, 200);
+
+        var curtainType = room.querySelector('.curtain-type-radio:checked') ? room.querySelector('.curtain-type-radio:checked').value : 'pinch-pleat';
+        var controlType = room.querySelector('.control-type-radio:checked') ? room.querySelector('.control-type-radio:checked').value : 'chains';
+
+        // Calculate the price for each room
+        var basePrice = calculateBasePrice(roomWidth, roomHeight);
+        var additionalPrice = calculateAdditionalPrice(controlType);
+        var roomPrice = basePrice + additionalPrice;
+
+        totalPrice += roomPrice;
+
+        room.querySelector('.room-width').addEventListener('input', calculatePrice);
+        room.querySelector('.room-height').addEventListener('input', calculatePrice);
+        room.querySelector('input[name="control-type-' + roomItreate + '"]').addEventListener('change', calculatePrice);
+
+        roomItreate++;
+    });
+
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+}
+
+
+     
 
         function calculateAdditionalPrice(controlType) {
             // Implement your additional price calculation logic here
@@ -286,9 +296,12 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
         function addRoom() {
             // Clone the template room
             var templateRoom = document.querySelector('.room');
+
             let roomCount = document.querySelectorAll(".room").length;
+            console.log(roomCount)
             var newRoom = templateRoom.cloneNode(true);
 
+            newRoom.querySelector(".delete-room").classList.remove("d-none")
             // Clear input values in the new room
             newRoom.querySelectorAll('input[type="text"], input[type="number"]').forEach(function(input) {
                 input.value = '';
@@ -312,10 +325,23 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
             // Attach event listener for the delete room button
             newRoom.querySelector('.delete-room').addEventListener('click', deleteRoom);
 
+            
 
-            newRoom.querySelector('.room-width').addEventListener('input', calculatePrice);
-            newRoom.querySelector('.room-height').addEventListener('input', calculatePrice);
-            newRoom.querySelector('input[name="control-type"]').addEventListener('change', calculatePrice);
+
+           
+
+             newRoom.querySelectorAll('input[type="radio"]').forEach(element => {
+            element.addEventListener('change', calculatePrice);
+        });
+
+        newRoom.querySelectorAll('.room-width').forEach(element => {
+            element.addEventListener('input', calculatePrice);
+        });
+
+        
+        newRoom.querySelectorAll('.room-height').forEach(element => {
+            element.addEventListener('input', calculatePrice);
+        });
 
             // Recalculate the price when a new room is added
             calculatePrice();
@@ -331,12 +357,101 @@ add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
         }
 
         document.getElementById('add-room').addEventListener('click', addRoom);
-        document.getElementById('calculate-price').addEventListener('click', calculatePrice);
+        document.querySelectorAll('input[type="radio"]').forEach(element => {
+            element.addEventListener('change', calculatePrice);
+        });
+
+        document.querySelectorAll('.room-width').forEach(element => {
+            element.addEventListener('input', calculatePrice);
+        });
+
+        
+        document.querySelectorAll('.room-height').forEach(element => {
+            element.addEventListener('input', calculatePrice);
+        });
+
 
         document.querySelectorAll('.delete-room').forEach(function(deleteButton) {
             deleteButton.addEventListener('click', deleteRoom);
         });
 
+   
 
+    function addToCart(roomDetails, totalPrice) {
+        // Create an array of items to add to the cart
+        var itemsToAdd = [];
+
+        roomDetails.forEach(function (room) {
+            var itemName = 'Room ' + room.roomIndex; // Customize the item name as needed
+            var item = {
+                id: room.roomIndex, // Use a unique identifier for each item
+                name: itemName,
+                price: room.roomPrice,
+                quantity: 1, // You can adjust the quantity as needed
+                data: {
+                    roomWidth: room.roomWidth,
+                    roomHeight: room.roomHeight,
+                    curtainType: room.curtainType,
+                    controlType: room.controlType,
+                }
+            };
+            itemsToAdd.push(item);
+        });
+
+        // Add items to the cart using the WooCommerce function
+        itemsToAdd.forEach(function (item) {
+            jQuery.ajax({
+                type: 'POST',
+                url: wc_add_to_cart_params.ajax_url,
+                data: {
+                    action: 'add_cart_item_data',
+                    item_data: item,
+                },
+                success: function (response) {
+                    // Handle success if needed
+                },
+            });
+        });
+
+        // Add the total price to the order notes
+        var orderNotes = 'Room Details:\n';
+        roomDetails.forEach(function (room) {
+            orderNotes += `
+                Room ${room.roomIndex}:
+                - Width: ${room.roomWidth} cm
+                - Height: ${room.roomHeight} cm
+                - Curtain Type: ${room.curtainType}
+                - Control Type: ${room.controlType}
+                - Price: ${room.roomPrice} KD\n\n`;
+        });
+        orderNotes += `Total Price: ${totalPrice.toFixed(2)} KD`;
+
+        // Update the order notes in the WooCommerce cart
+        jQuery.ajax({
+            type: 'POST',
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                action: 'update_order_notes',
+                order_notes: orderNotes,
+            },
+            success: function (response) {
+                // Handle success if needed
+            },
+        });
+    }
+
+    // Attach the addToCart function to the "Add to Cart" button click event
+    document.querySelector('.product-buy-optionsstyle__AddToCartButton-sc-g9crhl-6').addEventListener('click', function () {
+        var totalPrice = parseFloat(document.getElementById('total-price').textContent) || 0;
+        var roomDetails = captureRoomDetails();
+
+        // Call the addToCart function with the captured details and total price
+        addToCart(roomDetails, totalPrice);
     });
+
+    // ... (your existing JavaScript code)
+});
+
+
+
 </script>
