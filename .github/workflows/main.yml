@@ -12,7 +12,7 @@ jobs:
         id: deploy
         uses: pinkasey/cpanel-repository-action@v1.0.0
         with:
-          hostname: 'https://cpl13.main-hosting.eu/'
+          hostname: 'https://cpl13.main-hosting.eu'
           cpanel_token: 'F7WQMSK3GLNUACMAJ2A1KRIKXVFF0YES'
           cpanel_username: 'weba3991'
           repository_root: '/home/weba3991/product-pricing'
